@@ -1,10 +1,42 @@
 {
   "about": {
-    "name": "Crestron AutomateVX Control",
+    "name": "CSB315 Projector and AutomateVX Control BETA DO NOT FUCKING USE YET IT DEFINETLY DOESN'T FUCKING WORK",
     "version": "0.0.1",
     "author": "Mia Hanson"
   },
   "adapters": [
+    {
+      "id": "sony_projector_adapter",
+      "name": "Sony Projector Adapter",
+      "model": "GenericNetworkAdapter",
+      "ip": "tcp://10.0.12.121:53595",
+      "ports": [
+        {
+          "id": "projector_port",
+          "name": "Projector Control",
+          "methods": [
+            {
+              "id": "power",
+              "name": "Power",
+              "type": "actions",
+              "command": "power %\r\n",
+              "params": [
+                {
+                  "id": "on",
+                  "name": "Power On",
+                  "value": "\"on\""
+                },
+                {
+                  "id": "off",
+                  "name": "Power Off",
+                  "value": "\"off\""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "model": "GenericNetworkAdapter",
       "ip": "tcp://[AutomateIP]:3579",
@@ -16,7 +48,7 @@
             {
               "id": "autoswitch",
               "name": "AutoSwitch",
-              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 0\r\n\r\n",
+              "command": "POST /z/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 0\r\n\r\n",
               "params": [
                 {
                   "id": "start-autoswitch",
@@ -34,7 +66,7 @@
             {
               "id": "layouts",
               "name": "Layouts",
-              "command": "POST /api/ChangeLayout HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /z/ChLay HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "layout-a",
@@ -62,7 +94,7 @@
             {
               "id": "room_configs",
               "name": "Room Configs",
-              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /z/ChRc HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "rc-1",
@@ -87,8 +119,13 @@
       ]
     }
   ],
-  "styles": [
-    "automate-vx.main_method=autoswitch",
-    "automate-vx.icon=icon_rack_equipment"
-  ]
+  "rules": {
+    "zr_meeting_started": [
+      "projector_port.power.on"
+    ],
+    "zr_meeting_ended": [
+      "projector_port.power.off"
+    ]
+  },
+  "styles": []
 }
