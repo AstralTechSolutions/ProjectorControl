@@ -7,7 +7,7 @@
   "adapters": [
     {
       "model": "GenericNetworkAdapter",
-      "ip": "tcp://[AutomateIP]:3579",
+      "ip": "tcp://[AutomateIP]:4443",
       "ports": [
         {
           "id": "automate-vx",
@@ -16,7 +16,7 @@
             {
               "id": "autoswitch",
               "name": "AutoSwitch",
-              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 0\r\n\r\n",
+              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:4443\r\nContent-Length: 0\r\n\r\n",
               "params": [
                 {
                   "id": "start-autoswitch",
@@ -34,7 +34,7 @@
             {
               "id": "layouts",
               "name": "Layouts",
-              "command": "POST /api/ChangeLayout HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /api/ChangeLayout HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "layout-a",
@@ -62,7 +62,7 @@
             {
               "id": "room_configs",
               "name": "Room Configs",
-              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:3579\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "rc-1",
