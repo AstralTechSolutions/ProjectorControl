@@ -1,7 +1,7 @@
  {
   "about": {
     "name": "CSB315 Projector Control",
-    "version": "2.0",
+    "version": "2.0.0",
     "author": "Mia Hanson"
   },
   "adapters": [

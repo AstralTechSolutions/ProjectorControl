@@ -1,7 +1,7 @@
 {
   "about": {
     "name": "Crestron 1Beyond Camera Tracking Control",
-    "version": "1.0",
+    "version": "0.0.1",
     "author": "Mia Hanson"
   },
   "adapters": [
