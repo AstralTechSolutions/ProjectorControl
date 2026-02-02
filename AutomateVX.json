@@ -16,7 +16,15 @@
             {
               "id": "autoswitch",
               "name": "AutoSwitch",
-              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:4443\r\nContent-Length: 0\r\n\r\n",
+              "type": "http",
+              "method": "POST",
+              "url": "https://10.0.12.86:4443/api/%AutoSwitch",
+              "headers": {
+                "Authorization": "xxx",
+                "Content-Type": "application/json"
+              },
+              "body": "",
+              "insecure": true,
               "params": [
                 {
                   "id": "start-autoswitch",
@@ -28,8 +36,7 @@
                   "name": "Stop AutoSwitch",
                   "value": "Stop"
                 }
-              ],
-              "type": "actions"
+              ]
             },
             {
               "id": "layouts",
