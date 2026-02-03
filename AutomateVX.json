@@ -1,13 +1,13 @@
 {
   "about": {
     "name": "Crestron AutomateVX Control",
-    "version": "0.1.1",
+    "version": "0.1.8",
     "author": "Mia Hanson"
   },
   "adapters": [
     {
       "model": "GenericNetworkAdapter",
-      "ip": "tcp://[AutomateIP]:4443",
+      "ip": "tcp://10.0.12.86:4443",
       "ports": [
         {
           "id": "automate-vx",
@@ -16,15 +16,7 @@
             {
               "id": "autoswitch",
               "name": "AutoSwitch",
-              "type": "http",
-              "method": "POST",
-              "url": "https://10.0.12.86:4443/api/%AutoSwitch",
-              "headers": {
-                "Authorization": "xxx",
-                "Content-Type": "application/json"
-              },
-              "body": "",
-              "insecure": true,
+              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: 10.0.12.86:4443\r\nContent-Length: 0\r\n\r\n",
               "params": [
                 {
                   "id": "start-autoswitch",
@@ -36,12 +28,13 @@
                   "name": "Stop AutoSwitch",
                   "value": "Stop"
                 }
-              ]
+              ],
+              "type": "actions"
             },
             {
               "id": "layouts",
               "name": "Layouts",
-              "command": "POST /api/ChangeLayout HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /api/ChangeLayout HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: 10.0.12.86:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "layout-a",
@@ -69,7 +62,7 @@
             {
               "id": "room_configs",
               "name": "Room Configs",
-              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: [AutomateIP]:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: 10.0.12.86:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "rc-1",
