@@ -1,7 +1,7 @@
 {
   "about": {
     "name": "Crestron AutomateVX Control",
-    "version": "0.1.8",
+    "version": "0.1.009",
     "author": "Mia Hanson"
   },
   "adapters": [
@@ -16,7 +16,7 @@
             {
               "id": "autoswitch",
               "name": "AutoSwitch",
-              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: 10.0.12.86:4443\r\nContent-Length: 0\r\n\r\n",
+              "command": "POST /api/%AutoSwitch HTTP/1.1\r\nHost: 10.0.12.86:4443\r\nAuthorization: [AuthKey]\r\nContent-Type: application/json\r\nContent-Length: 0\\r\\n\\r\\n",
               "params": [
                 {
                   "id": "start-autoswitch",
@@ -34,7 +34,7 @@
             {
               "id": "layouts",
               "name": "Layouts",
-              "command": "POST /api/ChangeLayout HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: 10.0.12.86:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /api/ChangeLayout HTTP/1.1\r\nHost: 10.0.12.86:4443\r\nAuthorization: [AuthKey]\r\nContent-Type: application/json\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "layout-a",
@@ -62,7 +62,7 @@
             {
               "id": "room_configs",
               "name": "Room Configs",
-              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nAuthorization: [AuthKey]\r\nHost: 10.0.12.86:4443\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
+              "command": "POST /api/ChangeRoomConfiguration HTTP/1.1\r\nHost: 10.0.12.86:4443\r\nAuthorization: [AuthKey]\r\nContent-Type: application/json\r\nContent-Length: 10\r\n\r\n{\"id\":\"%\"}",
               "params": [
                 {
                   "id": "rc-1",
